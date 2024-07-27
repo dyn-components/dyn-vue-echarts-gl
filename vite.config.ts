@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import Components from "unplugin-vue-components/vite";
-import { dynVueComponentResolver } from "dyn-components";
+import DynComponents, { unpluginDynVueComponentsResolver } from "dyn-components";
 
 // https://vitejs.dev/config/
 export default defineConfig(async (params: ConfigEnv) => {
@@ -18,8 +18,9 @@ export default defineConfig(async (params: ConfigEnv) => {
       vue(),
       vueJsx(),
       Components({
-        resolvers: [dynVueComponentResolver()],
+        resolvers: [unpluginDynVueComponentsResolver()],
       }),
+      DynComponents(),
       vueDevTools()
     ],
     define: {

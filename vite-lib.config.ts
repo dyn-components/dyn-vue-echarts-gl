@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import Components from "unplugin-vue-components/vite";
-import { dynVueComponentResolver } from "dyn-components";
+import DynComponents, { unpluginDynVueComponentsResolver } from "dyn-components";
 import dts from "vite-plugin-dts";
 
 export default defineConfig(async (params: ConfigEnv) => {
@@ -20,8 +20,9 @@ export default defineConfig(async (params: ConfigEnv) => {
       vueJsx(),
       libInjectCss(),
       Components({
-        resolvers: [dynVueComponentResolver()],
+        resolvers: [unpluginDynVueComponentsResolver()],
       }),
+      DynComponents(),
       dts({ rollupTypes: true, tsconfigPath: resolve(__dirname, './tsconfig.app.json') })
     ],
     define: {

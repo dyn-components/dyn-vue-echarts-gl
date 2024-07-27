@@ -11,7 +11,7 @@
     "build": "npm run build:lib && npm run build:example"
   },
   "dependencies": {
-    "dyn-components": "0.0.0-alpha.8",
+    "dyn-components": "^0.0.1",
     "echarts": "^5.5.1",
     "echarts-gl": "^2.0.9",
     "vue": "^3.4.31"
